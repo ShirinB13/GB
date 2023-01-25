@@ -12,4 +12,18 @@ module.exports = function (app, blogData) {
   app.get("/register", function (req, res) {
     res.render("register.ejs", blogData);
   });
+  app.post("/registered", function (req, res) {
+    // saving data in database
+    res.send(
+      " Hello " +
+        req.body.first +
+        " " +
+        req.body.last +
+        " you are now registered!  We will send an email to you at " +
+        req.body.email
+    );
+  });
+  // app.get("/login", function (req, res) {
+  //   res.render("login.ejs", blogData);
+  // });
 };
