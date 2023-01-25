@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login to <%=blogName%></title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+  <body>
+    <h4>Signup to GoldBubble for exclusive access</h4>
+
+    <form action="/registered" method="post">
+      <div class="container">
+        <h1>Sign up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr />
+
+        <label for="email"><b>Email</b></label>
+        <input
+          type="text"
+          placeholder="Enter Email"
+          name="email"
+          id="email"
+          required
+        />
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          id="psw"
+          required
+        />
+
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input
+          type="password"
+          placeholder="Repeat Password"
+          name="psw-repeat"
+          id="psw-repeat"
+          required
+        />
+        <hr />
+
+        <button type="submit" class="registerbtn">Register</button>
+      </div>
+
+      <div class="container signin">
+        <p>Already have an account? <a href="/register">Sign in</a>.</p>
+      </div>
+    </form>
+  </body>
+</html>
