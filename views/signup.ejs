@@ -13,6 +13,26 @@
         <p>Please fill in this form to create an account.</p>
         <hr />
 
+        <label for="firstname"><b>FirstName</b></label>
+        <input
+        type="text"
+        placeholder="First Name"
+        name="FirstName"
+        id="firstname"
+        required
+        />
+        <br>
+
+        <label for="lastname"><b>LastName</b></label>
+        <input
+        type="text"
+        placeholder="Last Name"
+        name="LastName"
+        id="lastname"
+        required
+        />
+        <br>
+
         <label for="email"><b>Email</b></label>
         <input
           type="text"
@@ -22,8 +42,7 @@
           pattern="^[a-zA-Z0-9._]+@gold.[a-zA-Z.]+$"
           required
         />
-
-        <!-- password not working correctly -->
+        <br>
 
         <label for="psw"><b>Password</b></label>
         <input
@@ -35,6 +54,7 @@
           minlength="8"
           required
         />
+        <br>
 
         <label for="psw-repeat"><b>Repeat Password</b></label>
         <input
@@ -46,7 +66,24 @@
         />
         <hr />
 
-        <button type="submit" class="registerbtn">Register</button>
+        <button type="submit" class="registerbtn"onclick="return ansValidation(event)">Register</button>
+        <script>
+
+//         FUNCTION TO MAKE SURE PASSWORDS MATCH
+          function ansValidation(ev)
+          {
+              ev.preventDefault
+              var passValue = document.getElementById("psw").value;
+              var confpassValue = document.getElementById("psw-repeat").value;
+              if(passValue != confpassValue)
+                    {
+                       window.alert("Passwords do not match!");
+                       return false;
+                    }
+              else
+              {return true;}
+          }
+        </script>
       </div>
 
       <div class="container signin">

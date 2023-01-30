@@ -19,10 +19,10 @@ module.exports = function (app, blogData) {
     // saving data in database
     res.send(
       " Hello " +
-        req.body.first +
+        req.body.FirstName +
         " " +
-        req.body.last +
-        " you are now registered!  We will send an email to you at " +
+        req.body.LastName +
+        " you are now registered with the email address " +
         req.body.email
     );
   });
