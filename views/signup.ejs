@@ -16,25 +16,30 @@
         <label for="email"><b>Email</b></label>
         <input
           type="text"
-          placeholder="Enter Email"
+          placeholder="ENTER EMAIL"
           name="email"
           id="email"
+          pattern="^[a-zA-Z0-9._]+@gold.[a-zA-Z.]+$"
           required
         />
+
+        <!-- password not working correctly -->
 
         <label for="psw"><b>Password</b></label>
         <input
           type="password"
-          placeholder="Enter Password"
+          placeholder="8+ Chars, UP + NUM"
           name="psw"
           id="psw"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          minlength="8"
           required
         />
 
         <label for="psw-repeat"><b>Repeat Password</b></label>
         <input
           type="password"
-          placeholder="Repeat Password"
+          placeholder="REPEAT PASSWORD"
           name="psw-repeat"
           id="psw-repeat"
           required

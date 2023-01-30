@@ -26,7 +26,4 @@ module.exports = function (app, blogData) {
         req.body.email
     );
   });
-  // app.get("/login", function (req, res) {
-  //   res.render("login.ejs", blogData);
-  // });
 };
