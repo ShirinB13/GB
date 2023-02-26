@@ -15,6 +15,9 @@ module.exports = function (app, blogData) {
   app.get("/signup", function (req, res) {
     res.render("signup.ejs", blogData);
   });
+  app.get("/blog", function (req, res) {
+    res.render("blog.ejs", blogData);
+  });
   app.post("/registered", function (req, res) {
     // saving data in database
     res.send(
