@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to <%=blogName%></title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+  <!-- ///////////// //account profile -->
+  <div class="dropdown">
+    <img src="profile.jpg" alt="Profile Photo" />
+    <div class="dropdown-content">
+      <a href="#">Account Details</a>
+      <a href="#">Edit Personal Information</a>
+      <a href="#">Add Profile Picture</a>
+      <a href="#">Terminate Account</a>
+    </div>
+  </div>
+  <!-- ///////////// -->
+  <body>
+    <h1>Welcome to <%=blogName%></h1>
+
+    <p><a>About <%=blogName%></a></p>
+
+    <!-- ///////navigation bar -->
+    <div class="navbar">
+      <a href="index.ejs">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Arts and Humanities
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Art</a>
+          <a href="#">Design</a>
+          <a href="#">English and Creative Writing</a>
+          <a href="#">Music</a>
+          <a href="#">Theatre and Performance</a>
+          <a href="#">Visual Cultures</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Culture and Society
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Anthropology</a>
+          <a href="#">History</a>
+          <a href="#">Law</a>
+          <a href="#">Media Communications and Cultural Studies</a>
+          <a href="#">Politics and International Relations</a>
+          <a href="#">Sociology</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Professional Studies
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Educational Studies</a>
+          <a href="#">Institute for Creative and Cultural Entrepreneurship</a>
+          <a href="#">Institute of Management Studies</a>
+          <a href="#">Psychology</a>
+          <a href="#">Social Therapeutic and Community Studies</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Science and Technology
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Computing</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Other Academic Areas
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Academic Language and Literacies</a>
+          <a href="#">Confucius Institute for Dance and Performance</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Search
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <form>
+            <input type="text" placeholder="Type Something.." />
+            <button type="submit">Go</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- //////blog layout/////// -->
+
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2>BLOG 1</h2>
+        <h5>Title description, Dec 7, 2017</h5>
+        <div class="image" style="height: 200px">Image</div>
+        <p>Some text..</p>
+      </div>
+      <div class="card">
+        <h2>BLOG 2</h2>
+        <h5>Title description, Sep 2, 2017</h5>
+        <div class="image" style="height: 200px">Image</div>
+        <p>Some text..</p>
+      </div>
+    </div>
+    <div class="rightcolumn">
+      <div class="card">
+        <h2>BLOG 3</h2>
+        <div class="image" style="height: 100px">Image</div>
+        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+      </div>
+      <div class="card">
+        <h3>Popular Post</h3>
+        <div class="image">Image</div>
+        <br />
+        <div class="image">Image</div>
+        <br />
+        <div class="image">Image</div>
+      </div>
+      <div class="card">
+        <h3>OTHER SUBJECTS</h3>
+        <p>Some text..</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
+</html>
