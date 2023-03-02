@@ -104,7 +104,7 @@ a:active {
 body {
   font-family: Arial;
   padding: 20px;
-  background: #f1f1f1;
+  background: white;
 }
 
 /* Header/Blog Title */
@@ -172,7 +172,7 @@ body {
 
   /* Add a card effect for articles */
   .card {
-    background-color: white;
+    background-color: #ebf8fa;
     padding: 20px;
     margin-top: 20px;
   }
@@ -206,7 +206,7 @@ body {
 
 /* Add a card effect for articles */
 .card {
-  background-color: white;
+  background-color: #ebf8fa;
   padding: 20px;
   margin-top: 20px;
 }
@@ -222,6 +222,6 @@ body {
 .footer {
   padding: 20px;
   text-align: center;
-  background: #ddd;
+  background: #ebf8fa;
   margin-top: 20px;
 }
