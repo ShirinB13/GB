@@ -15,9 +15,21 @@ module.exports = function (app, blogData) {
   app.get("/signup", function (req, res) {
     res.render("signup.ejs", blogData);
   });
-  app.get("/blog", function (req, res) {
-    res.render("blog.ejs", blogData);
+  // app.get("/blog", function (req, res) {
+  //   res.render("blog.ejs", blogData);
+  // });
+  app.get("/blogs", function (req, res) {
+    let sqlquery = "SELECT * FROM blogs";
+    db.query(sqlquery, (err, result) => {
+      if (err) {
+        res.redirect("./");
+      }
+      let newData = Object.assign({}, blogData, { availableBlogs: result });
+      console.log(newData);
+      res.render("blogs.ejs", newData);
+    });
   });
+
   app.post("/registered", function (req, res) {
     // saving data in database
     res.send(

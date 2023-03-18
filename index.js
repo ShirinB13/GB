@@ -14,7 +14,7 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "appuser",
   password: "app2027",
-  database: "",
+  database: "goldbubble",
 });
 // Connect to the database
 db.connect((err) => {

@@ -1,0 +1,26 @@
+<!-- layout for blogs page -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to <%=blogName%></title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+  <body>
+    <h1>Check out the blogs below:</h1>
+
+    <table>
+      <% for(let i = 0; i < availableBlogs.length; i++){ %>
+      <tr>
+        <th><%=availableBlogs[i].title%></th>
+      </tr>
+      <tr>
+        <td><%=availableBlogs[i].subject%></td>
+      </tr>
+      <tr>
+        <td><%=availableBlogs[i].info%></td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
