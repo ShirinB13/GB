@@ -9,7 +9,7 @@
     <h1><center>G O L D B U B B L E</center></h1>
     <!-- ///////navigation bar -->
     <div class="navbar">
-      <a href="index.ejs">Home</a>
+      <a href="/">HOME</a>
       <div class="dropdown">
         <button class="dropbtn">
           ARTS AND HUMANITIES
@@ -78,7 +78,23 @@
           <a href="#">Terminate Account</a>
         </div>
       </div>
+      <!-- Search Bar-->
+      <div class="dropdown">
+        <button class="dropbtn">
+          SEARCH
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <form action="/search" method="get">
+            <input type="text" name="query" placeholder="Search..." />
+            <button type="submit">Go</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <!-- ///////////// -->
+    <div class="box">
+      <p>WELCOME TO GOLDBUBBLE</p>
+      <p>Connect, Discuss, Learn and Share with Students</p>
+    </div>
   </body>
 </html>
