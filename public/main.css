@@ -96,6 +96,10 @@ a:active {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.dropdown img {
+  padding: 15px;
+  color: white;
+}
 
 * {
   box-sizing: border-box;
