@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Post</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h2>ADD A POST</h2>
+
+    <form method="POST" action="/postadded">
+      <p>
+        Date:
+        <input
+          id="post_date"
+          type="date"
+          name="post_date"
+          value="<%=post_date%>"
+        />
+      </p>
+
+      <p>
+        First Name:
+        <input
+          id="firstname"
+          type="text"
+          name="firstname"
+          value="<%=firstname%>"
+        />
+      </p>
+      <p>
+        Surname:
+        <input id="surname" type="text" name="surname" value="<%=surname%>" />
+      </p>
+      <p>
+        Email:
+        <input id="email" type="email" name="email" value="<%=email%>" />
+      </p>
+      <p>
+        Username:
+        <input
+          id="username"
+          type="text"
+          name="username"
+          value="<%=username%>"
+        />
+      </p>
+      <p>
+        Topic:
+        <input
+          id="topic_title"
+          type="text"
+          name="topic_title"
+          value="<%=topic_title%>"
+        />
+      </p>
+      <p>
+        Title:
+        <input
+          id="post_title"
+          type="text"
+          name="post_title"
+          value="<%=post_title%>"
+        />
+      </p>
+      <p>
+        Content:
+        <textarea id="post_content" type="text" name="post_content" value="">
+<%=post_content%></textarea
+        >
+      </p>
+      <input type="submit" value="Add Post" />
+    </form>
+    <p class="errormessage"><%=errormessage %></p>
+  </body>
+</html>
