@@ -2,9 +2,97 @@
 <html>
   <head>
     <title>POSTS</title>
-    <link rel="stylesheet" type="text/css" href="/public/main.css" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
+
   <body>
+    <h1><center>G O L D B U B B L E</center></h1>
+    <!-- ///////navigation bar -->
+    <div class="navbar">
+      <a href="/">HOME</a>
+      <div class="dropdown">
+        <button class="dropbtn">
+          ARTS AND HUMANITIES
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Art</a>
+          <a href="#">Design</a>
+          <a href="#">English</a>
+          <a href="#">Music</a>
+          <a href="#">Theatre</a>
+          <a href="#">Visual Cultures</a>
+          <a href="#">Dance and Performance</a>
+          <a href="#">Languages</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          CULTURE AND SOCIETY
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Anthropology</a>
+          <a href="#">History</a>
+          <a href="#">Media</a>
+          <a href="#">Politics</a>
+          <a href="#">Sociology</a>
+          <a href="#">Psychology</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          PROFESSIONAL STUDIES
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Education</a>
+          <a href="#">Business</a>
+          <a href="#">Management</a>
+          <a href="#">Law</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          SCIENCE AND TECHNOLOGY
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Computer Science</a>
+          <a href="#">Computing</a>
+          <a href="#">Games Computing</a>
+        </div>
+      </div>
+      <!-- ///////////// //account profile -->
+      <div class="dropdown">
+        <button class="dropbtn">
+          ACCOUNT
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <!-- <img src="profile.jpg" alt="Profile Photo" /> -->
+        <div class="dropdown-content">
+          <i class="fa fa-caret-down"></i>
+          <a href="#">Account Details</a>
+          <a href="#">Edit Personal Information</a>
+          <a href="#">Add Profile Picture</a>
+          <a href="#">Terminate Account</a>
+        </div>
+      </div>
+      <!-- Search Bar-->
+      <div class="dropdown">
+        <button class="dropbtn">
+          SEARCH
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <form action="/search" method="get">
+            <input type="text" name="query" placeholder="Search..." />
+            <button type="submit">Go</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <h1>VIEW POSTS</h1>
     <table>
       <tr>
