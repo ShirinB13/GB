@@ -1,1 +1,13 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+    <ul>
+      <% posts.forEach(function(post) { %>
+      <li><%= post.post_title %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

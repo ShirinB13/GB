@@ -3,11 +3,298 @@ module.exports = function (app, blogData) {
   app.get("/", function (req, res) {
     res.render("index.ejs", blogData);
   });
+
   app.get("/search", function (req, res) {
-    res.render("search.ejs", blogData);
+    let keyword = req.query.keyword;
+    let sqlquery = "SELECT * FROM posts WHERE post_title LIKE ?";
+    let searchValue = "%" + keyword + "%";
+    db.query(sqlquery, searchValue, (err, result) => {
+      if (err) {
+        res.redirect("./");
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      console.log(newData);
+      res.render("search.ejs", newData);
+    });
   });
+
   app.get("/register", function (req, res) {
     res.render("register.ejs", blogData);
+  });
+
+  app.get("/art", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Art";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("art.ejs", newData);
+    });
+  });
+  app.get("/design", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Design";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("design.ejs", newData);
+    });
+  });
+
+  app.get("/english", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "English";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("english.ejs", newData);
+    });
+  });
+
+  app.get("/music", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Music";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("music.ejs", newData);
+    });
+  });
+
+  app.get("/theatre", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Theatre";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("theatre.ejs", newData);
+    });
+  });
+
+  app.get("/visualcultures", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Visual Cultures";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("visualcultures.ejs", newData);
+    });
+  });
+
+  app.get("/dance&performance", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Dance and Performance";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("dance&performance.ejs", newData);
+    });
+  });
+
+  app.get("/languages", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Languages";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("languages.ejs", newData);
+    });
+  });
+  app.get("/signup", function (req, res) {
+    res.render("signup.ejs", blogData);
+  });
+
+  app.get("/anthropology", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Anthropology";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("anthropology.ejs", newData);
+    });
+  });
+
+  app.get("/history", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "History";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("history.ejs", newData);
+    });
+  });
+
+  app.get("/media", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Media";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("media.ejs", newData);
+    });
+  });
+
+  app.get("/politics", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Politics";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("politics.ejs", newData);
+    });
+  });
+
+  app.get("/sociology", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Sociology";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("sociology.ejs", newData);
+    });
+  });
+
+  app.get("/psychology", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Psychology";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("psychology.ejs", newData);
+    });
+  });
+
+  app.get("/education", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Education";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("education.ejs", newData);
+    });
+  });
+
+  app.get("/business", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Business";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("business.ejs", newData);
+    });
+  });
+
+  app.get("/management", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Management";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("Management.ejs", newData);
+    });
+  });
+
+  app.get("/law", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Law";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("Law.ejs", newData);
+    });
+  });
+
+  app.get("/computerscience", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Computer Science";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("computerscience.ejs", newData);
+    });
+  });
+
+  app.get("/computing", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Computing";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("computing.ejs", newData);
+    });
+  });
+
+  app.get("/gamescomputing", function (req, res) {
+    let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
+    let topic = "Games Computing";
+    db.query(sqlquery, topic, function (err, result) {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      res.render("gamescomputing.ejs", newData);
+    });
   });
   app.get("/signup", function (req, res) {
     res.render("signup.ejs", blogData);
@@ -24,6 +311,7 @@ module.exports = function (app, blogData) {
       res.render("blogs.ejs", newData);
     });
   });
+
   // Add a New Post page
   app.get("/addpost", function (req, res) {
     // Set the initial values for the form
@@ -96,7 +384,7 @@ module.exports = function (app, blogData) {
           console.error(err.message);
           return;
         }
-        res.send("Your post has been added to the forum");
+        res.redirect("/" + req.body.topic_title);
       });
     });
   });

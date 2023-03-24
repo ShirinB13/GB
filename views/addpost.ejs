@@ -44,7 +44,7 @@
           value="<%=username%>"
         />
       </p>
-      <p>
+      <!-- <p>
         Topic:
         <input
           id="topic_title"
@@ -52,7 +52,35 @@
           name="topic_title"
           value="<%=topic_title%>"
         />
+      </p> -->
+      <p>
+        Topic:
+        <select id="topic_title" value="<%=topic_title%>" name="topic_title">
+          <option value="">Select a degree</option>
+          <option value="Art">Art</option>
+          <option value="Design">Design</option>
+          <option value="English">English</option>
+          <option value="Music">Music</option>
+          <option value="Theatre">Theatre</option>
+          <option value="Visual Cultures">Visual Cultures</option>
+          <option value="Dance and Performance">Dance and Performance</option>
+          <option value="Languages">Languages</option>
+          <option value="Anthropology">Anthropology</option>
+          <option value="History">History</option>
+          <option value="Media">Media</option>
+          <option value="Politics">Politics</option>
+          <option value="Sociology">Sociology</option>
+          <option value="Psychology">Psychology</option>
+          <option value="Education">Education</option>
+          <option value="Business">Business</option>
+          <option value="Management">Management</option>
+          <option value="Law">Law</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Computing">Computing</option>
+          <option value="Games Computing">Games Computing</option>
+        </select>
       </p>
+
       <p>
         Title:
         <input
