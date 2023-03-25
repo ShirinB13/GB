@@ -22,29 +22,6 @@ module.exports = function (app, blogData) {
     res.render("register.ejs", blogData);
   });
 
-  // // handle POST request to save signup information
-  // app.post("/register", function (req, res) {
-  //   const username = req.body.username;
-  //   const psw = req.body.psw;
-
-  //   let sqlquery = `SELECT * FROM users WHERE username = ? AND psw = ?`;
-  //   db.query(sqlquery, [username, psw], function (err, result) {
-  //     if (err) throw err;
-  //     if (result.length > 0) {
-  //       console.log("User exists in the database");
-  //       // If the user exists and password matches, redirect to success page
-  //       res.redirect("/art");
-  //     } else {
-  //       console.log(
-  //         "User does not exist in the database or password is incorrect"
-  //       );
-  //       // If the user does not exist or password is incorrect, redirect to home page
-  //       res.redirect("/");
-  //     }
-  //   });
-  // });
-  // handle POST request to save signup information
-  // handle POST request to save signup information
   app.post("/register", function (req, res) {
     const username = req.body.username;
     const psw = req.body.psw;
