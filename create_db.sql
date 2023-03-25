@@ -14,14 +14,15 @@ DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS topics;
 
-# Create the user table to store user details
 CREATE TABLE users (
   firstname VARCHAR(20) NOT NULL,
   surname VARCHAR(20) NOT NULL,
   username VARCHAR(15) NOT NULL UNIQUE,
   email VARCHAR(100),
+  psw VARCHAR(50),
   PRIMARY KEY(username)
 );
+
 
 # Create the topics table to store the list of available topics
 CREATE TABLE topics (

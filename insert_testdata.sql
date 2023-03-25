@@ -1,19 +1,19 @@
 # Select the database
 USE goldbubble;
 
-# Insert test users
-INSERT INTO users (firstname, surname, username, email)
+INSERT INTO users (firstname, surname, username, email, psw)
 VALUES
-    ('John', 'Doe', 'jdoe123', 'johndoe123@gold.ac.uk'),
-    ('Jane', 'Doe', 'jdoe456', 'janedoe456@gold.ac.uk'),
-    ('Bob', 'Smith', 'bsmith789', 'bobsmith789@gold.ac.uk'),
-    ('Alice', 'Johnson', 'ajohnson789', 'alicej789@gold.ac.uk'),
-    ('David', 'Lee', 'dlee456', 'davidl456@gold.ac.uk'),
-    ('Emily', 'Wilson', 'ewilson123', 'emilyw123@gold.ac.uk'),
-    ('Michael', 'Garcia', 'mgarcia789', 'michaelg789@gold.ac.uk'),
-    ('Samantha', 'Nguyen', 'snguyen456', 'samanthan456@gold.ac.uk'),
-    ('William', 'Brown', 'wbrown789', 'williamb789@gold.ac.uk'),
-    ('Olivia', 'Taylor', 'otaylor123', 'oliviat123@gold.ac.uk');
+    ('John', 'Doe', 'jdoe123', 'johndoe123@gold.ac.uk', 'P@ssword1'),
+    ('Jane', 'Doe', 'jdoe456', 'janedoe456@gold.ac.uk', 'Qwerty1!'),
+    ('Bob', 'Smith', 'bsmith789', 'bobsmith789@gold.ac.uk', 'Summer21'),
+    ('Alice', 'Johnson', 'ajohnson789', 'alicej789@gold.ac.uk', 'Orange2#'),
+    ('David', 'Lee', 'dlee456', 'davidl456@gold.ac.uk', 'H3ll0W0rld'),
+    ('Emily', 'Wilson', 'ewilson123', 'emilyw123@gold.ac.uk', 'April2022'),
+    ('Michael', 'Garcia', 'mgarcia789', 'michaelg789@gold.ac.uk', 'B1gM0ney'),
+    ('Samantha', 'Nguyen', 'snguyen456', 'samanthan456@gold.ac.uk', 'R0s3G@rden'),
+    ('William', 'Brown', 'wbrown789', 'williamb789@gold.ac.uk', 'Snowman1#'),
+    ('Olivia', 'Taylor', 'otaylor123', 'oliviat123@gold.ac.uk', 'Summer21!');
+
 
 # Insert test topics
 INSERT INTO topics(topic_title)

@@ -15,23 +15,33 @@
 
         <label for="firstname"><b>FirstName</b></label>
         <input
-        type="text"
-        placeholder="First Name"
-        name="FirstName"
-        id="firstname"
-        required
+          type="text"
+          placeholder="First Name"
+          name="FirstName"
+          id="firstname"
+          required
         />
-        <br>
+        <br />
 
         <label for="lastname"><b>LastName</b></label>
         <input
-        type="text"
-        placeholder="Last Name"
-        name="LastName"
-        id="lastname"
-        required
+          type="text"
+          placeholder="Last Name"
+          name="LastName"
+          id="lastname"
+          required
         />
-        <br>
+        <br />
+
+        <label for="username"><b>Username</b></label>
+        <input
+          type="text"
+          placeholder="Username"
+          name="username"
+          id="username"
+          required
+        />
+        <br />
 
         <label for="email"><b>Email</b></label>
         <input
@@ -42,7 +52,7 @@
           pattern="^[a-zA-Z0-9._]+@gold.[a-zA-Z.]+$"
           required
         />
-        <br>
+        <br />
 
         <label for="psw"><b>Password</b></label>
         <input
@@ -54,7 +64,7 @@
           minlength="8"
           required
         />
-        <br>
+        <br />
 
         <label for="psw-repeat"><b>Repeat Password</b></label>
         <input
@@ -66,22 +76,25 @@
         />
         <hr />
 
-        <button type="submit" class="registerbtn"onclick="return ansValidation(event)">Register</button>
+        <button
+          type="submit"
+          class="registerbtn"
+          onclick="return ansValidation(event)"
+        >
+          Register
+        </button>
         <script>
-
-//         FUNCTION TO MAKE SURE PASSWORDS MATCH
-          function ansValidation(ev)
-          {
-              ev.preventDefault
-              var passValue = document.getElementById("psw").value;
-              var confpassValue = document.getElementById("psw-repeat").value;
-              if(passValue != confpassValue)
-                    {
-                       window.alert("Passwords do not match!");
-                       return false;
-                    }
-              else
-              {return true;}
+          //         FUNCTION TO MAKE SURE PASSWORDS MATCH
+          function ansValidation(ev) {
+            ev.preventDefault;
+            var passValue = document.getElementById("psw").value;
+            var confpassValue = document.getElementById("psw-repeat").value;
+            if (passValue != confpassValue) {
+              window.alert("Passwords do not match!");
+              return false;
+            } else {
+              return true;
+            }
           }
         </script>
       </div>
