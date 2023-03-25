@@ -1,7 +1,71 @@
 module.exports = function (app, blogData) {
   // Handle our routes
   app.get("/", function (req, res) {
-    res.render("index.ejs", blogData);
+    res.render("index.ejs", { user: req.session.user });
+  });
+
+  app.get("/register", function (req, res) {
+    res.render("register.ejs", blogData);
+  });
+
+  // Define the login route
+  app.post("/register", function (req, res) {
+    const username = req.body.username;
+    const password = req.body.psw;
+
+    console.log("username:", username);
+    console.log("password:", password);
+
+    // Query the database for the user with the matching username
+    db.query(
+      "SELECT * FROM users WHERE username = ?",
+      [username],
+      function (err, result) {
+        if (err) throw err;
+
+        // If there is no user with the matching username, redirect back to the login page
+        if (result.length === 0) {
+          console.log("No user found with username:", username);
+          res.redirect("/register");
+          return;
+        }
+
+        const user = result[0];
+
+        console.log("user:", user);
+
+        // Verify the user's password
+        if (user.psw === password) {
+          // Create a session with the user's information
+          const sessionData = {
+            username: user.username,
+            permissions: user.permissions,
+            firstname: user.firstname,
+          };
+
+          // Save the session data to the database
+          req.session.user = sessionData;
+
+          // Redirect the user to the home page
+          res.redirect("/");
+        } else {
+          // The password is incorrect
+          console.log("Incorrect password for user:", username);
+          res.render("register.ejs", {
+            message: "Invalid username or password",
+          });
+        }
+      }
+    );
+  });
+
+  // Define the logout route
+  app.get("/logout", function (req, res) {
+    // Destroy the session data
+    req.session.destroy();
+
+    // Redirect the user to the index page
+    res.redirect("/");
   });
 
   app.get("/search", function (req, res) {
@@ -18,32 +82,8 @@ module.exports = function (app, blogData) {
     });
   });
 
-  app.get("/register", function (req, res) {
-    res.render("register.ejs", blogData);
-  });
-
-  app.post("/register", function (req, res) {
-    const username = req.body.username;
-    const psw = req.body.psw;
-
-    let sqlquery = `SELECT * FROM users WHERE username = ? AND psw = ?`;
-    db.query(sqlquery, [username, psw], function (err, result) {
-      if (err) throw err;
-      if (result.length > 0) {
-        console.log("User exists in the database");
-        // If the user exists and password matches, redirect to home page with the username as a parameter
-        res.redirect("/art");
-      } else {
-        console.log(
-          "User does not exist in the database or password is incorrect"
-        );
-        // If the user does not exist or password is incorrect, redirect to home page
-        res.redirect("/");
-      }
-    });
-  });
-
   app.get("/art", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Art";
     db.query(sqlquery, topic, function (err, result) {
@@ -51,11 +91,12 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("art.ejs", newData);
     });
   });
   app.get("/design", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Design";
     db.query(sqlquery, topic, function (err, result) {
@@ -63,12 +104,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("design.ejs", newData);
     });
   });
 
   app.get("/english", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "English";
     db.query(sqlquery, topic, function (err, result) {
@@ -76,12 +118,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("english.ejs", newData);
     });
   });
 
   app.get("/music", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Music";
     db.query(sqlquery, topic, function (err, result) {
@@ -89,12 +132,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("music.ejs", newData);
     });
   });
 
   app.get("/theatre", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Theatre";
     db.query(sqlquery, topic, function (err, result) {
@@ -102,12 +146,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("theatre.ejs", newData);
     });
   });
 
   app.get("/visualcultures", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Visual Cultures";
     db.query(sqlquery, topic, function (err, result) {
@@ -115,12 +160,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("visualcultures.ejs", newData);
     });
   });
 
   app.get("/dance&performance", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Dance and Performance";
     db.query(sqlquery, topic, function (err, result) {
@@ -128,12 +174,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("dance&performance.ejs", newData);
     });
   });
 
   app.get("/languages", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Languages";
     db.query(sqlquery, topic, function (err, result) {
@@ -141,7 +188,7 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("languages.ejs", newData);
     });
   });
@@ -150,6 +197,7 @@ module.exports = function (app, blogData) {
   });
 
   app.get("/anthropology", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Anthropology";
     db.query(sqlquery, topic, function (err, result) {
@@ -157,12 +205,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("anthropology.ejs", newData);
     });
   });
 
   app.get("/history", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "History";
     db.query(sqlquery, topic, function (err, result) {
@@ -170,12 +219,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("history.ejs", newData);
     });
   });
 
   app.get("/media", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Media";
     db.query(sqlquery, topic, function (err, result) {
@@ -183,12 +233,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("media.ejs", newData);
     });
   });
 
   app.get("/politics", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Politics";
     db.query(sqlquery, topic, function (err, result) {
@@ -196,12 +247,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("politics.ejs", newData);
     });
   });
 
   app.get("/sociology", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Sociology";
     db.query(sqlquery, topic, function (err, result) {
@@ -209,12 +261,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("sociology.ejs", newData);
     });
   });
 
   app.get("/psychology", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Psychology";
     db.query(sqlquery, topic, function (err, result) {
@@ -222,12 +275,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("psychology.ejs", newData);
     });
   });
 
   app.get("/education", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Education";
     db.query(sqlquery, topic, function (err, result) {
@@ -235,12 +289,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("education.ejs", newData);
     });
   });
 
   app.get("/business", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Business";
     db.query(sqlquery, topic, function (err, result) {
@@ -248,12 +303,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("business.ejs", newData);
     });
   });
 
   app.get("/management", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Management";
     db.query(sqlquery, topic, function (err, result) {
@@ -261,12 +317,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("Management.ejs", newData);
     });
   });
 
   app.get("/law", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Law";
     db.query(sqlquery, topic, function (err, result) {
@@ -274,12 +331,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("Law.ejs", newData);
     });
   });
 
   app.get("/computerscience", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Computer Science";
     db.query(sqlquery, topic, function (err, result) {
@@ -287,12 +345,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("computerscience.ejs", newData);
     });
   });
 
   app.get("/computing", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Computing";
     db.query(sqlquery, topic, function (err, result) {
@@ -300,12 +359,13 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("computing.ejs", newData);
     });
   });
 
   app.get("/gamescomputing", function (req, res) {
+    const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
     let topic = "Games Computing";
     db.query(sqlquery, topic, function (err, result) {
@@ -313,7 +373,7 @@ module.exports = function (app, blogData) {
         console.error(err.message);
         return;
       }
-      let newData = Object.assign({}, blogData, { posts: result });
+      let newData = Object.assign({}, blogData, { posts: result, user: user });
       res.render("gamescomputing.ejs", newData);
     });
   });
