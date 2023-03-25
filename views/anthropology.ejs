@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to <%=blogName%></title>
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
 
@@ -63,21 +62,26 @@
           <a href="/gamescomputing">Games Computing</a>
         </div>
       </div>
-      <!-- ///////////// //account profile -->
       <div class="dropdown">
+        <% if (user) { %>
         <button class="dropbtn">
-          ACCOUNT
+          <%= user.username %>
           <i class="fa fa-caret-down"></i>
         </button>
-        <!-- <img src="profile.jpg" alt="Profile Photo" /> -->
-        <div class="dropdown-content">
+        <a href="/logout" class="logout-button">Log Out</a>
+        <% } else { %>
+        <button class="dropbtn" onclick="redirectToSignup()">
+          LOG IN
           <i class="fa fa-caret-down"></i>
-          <a href="#">Account Details</a>
-          <a href="#">Edit Personal Information</a>
-          <a href="#">Add Profile Picture</a>
-          <a href="#">Terminate Account</a>
-        </div>
+        </button>
+        <% } %>
       </div>
+
+      <script>
+        function redirectToSignup() {
+          window.location.href = "/signup";
+        }
+      </script>
       <!-- Search Bar-->
       <div class="dropdown">
         <button class="dropbtn">

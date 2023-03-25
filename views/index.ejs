@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to <%=blogName%></title>
+    <title>Welcome to Goldbubble</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
 
@@ -64,10 +64,18 @@
         </div>
       </div>
       <div class="dropdown">
+        <% if (user) { %>
+        <button class="dropbtn">
+          <%= user.username %>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <a href="/logout" class="logout-button">Log Out</a>
+        <% } else { %>
         <button class="dropbtn" onclick="redirectToSignup()">
           LOG IN
           <i class="fa fa-caret-down"></i>
         </button>
+        <% } %>
       </div>
 
       <script>
@@ -93,8 +101,6 @@
     <div class="buildingimg">
       <img src="/images/build.jpeg" alt="picture of goldsmiths building" />
     </div>
-    <!-- <a href="/addpost">
-      <img src="image.jpg" alt="ADD A POST OF YOUR OWN" />
-    </a> -->
+    </a> 
   </body>
 </html>

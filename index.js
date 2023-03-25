@@ -7,8 +7,17 @@ var bodyParser = require("body-parser");
 const app = express();
 const port = 8001;
 const mysql = require("mysql");
+const session = require("express-session");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Set up the session middleware
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 // Define the database connection
 const db = mysql.createConnection({
   host: "localhost",
