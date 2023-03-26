@@ -3,16 +3,16 @@ USE goldbubble;
 
 INSERT INTO users (firstname, surname, username, email, psw)
 VALUES
-    ('John', 'Doe', 'jdoe123', 'johndoe123@gold.ac.uk', 'P@ssword1'),
-    ('Jane', 'Doe', 'jdoe456', 'janedoe456@gold.ac.uk', 'Qwerty1!'),
-    ('Bob', 'Smith', 'bsmith789', 'bobsmith789@gold.ac.uk', 'Summer21'),
-    ('Alice', 'Johnson', 'ajohnson789', 'alicej789@gold.ac.uk', 'Orange2#'),
-    ('David', 'Lee', 'dlee456', 'davidl456@gold.ac.uk', 'H3ll0W0rld'),
-    ('Emily', 'Wilson', 'ewilson123', 'emilyw123@gold.ac.uk', 'April2022'),
-    ('Michael', 'Garcia', 'mgarcia789', 'michaelg789@gold.ac.uk', 'B1gM0ney'),
-    ('Samantha', 'Nguyen', 'snguyen456', 'samanthan456@gold.ac.uk', 'R0s3G@rden'),
-    ('William', 'Brown', 'wbrown789', 'williamb789@gold.ac.uk', 'Snowman1#'),
-    ('Olivia', 'Taylor', 'otaylor123', 'oliviat123@gold.ac.uk', 'Summer21!');
+('John', 'Doe', 'jdoe123', 'johndoe123@gold.ac.uk', '$2b$10$ZDmgmjtS.82SA4YfN2aJautcgRYEg7JU9CcePsCN.5N.sedyL8QpG'),
+('Jane', 'Doe', 'jdoe456', 'janedoe456@gold.ac.uk', '$2b$10$GTd..041NHyH23w2wdGssex0KEVx1zfrv7ZjVIVzrJ9IR73gYmmKq'),
+('Bob', 'Smith', 'bsmith789', 'bobsmith789@gold.ac.uk', '$2b$10$A1BMTAEDRd.eDFExAXzhme5Cx/XCkY61KDbxUrDtnIREBmDql/tra'),
+('Alice', 'Johnson', 'ajohnson789', 'alicej789@gold.ac.uk', '$2b$10$DjkH4vsjRAqsYHVYxbDdU.HqYTE/LuhfLSJcbforBhxH7A.USbxjO'),
+('David', 'Lee', 'dlee456', 'davidl456@gold.ac.uk', '$2b$10$/QZjaC48D5jFLF6QHQHrPOFDpKMYsavNUfo4XVjlpjvDtuI7E9F7u'),
+('Emily', 'Wilson', 'ewilson123', 'emilyw123@gold.ac.uk', '$2b$10$pIcnlfYLsix78f8s.oKeQOMdZ6jdOllqa1ejCwLhQx0LcCmeuHLW.'),
+('Michael', 'Garcia', 'mgarcia789', 'michaelg789@gold.ac.uk', '$2b$10$xHhh6/b/FsTyFaTxlnXkVOYMADGYydsJUi/IHcvKb/GiY8O0vJbYa'),
+('Samantha', 'Nguyen', 'snguyen456', 'samanthan456@gold.ac.uk', '$2b$10$xBqW773diwVDQAG6iNcMVO4XDtVaFZB97zNmseuHx9KHFBUT6v2we'),
+('William', 'Brown', 'wbrown789', 'williamb789@gold.ac.uk', '$2b$10$/hln8b1ymeHOoqcGKhFqG.lhsi19dUXHDbGtEZPL8MQGOsNB38OyC'),
+('Olivia', 'Taylor', 'otaylor123', 'oliviat123@gold.ac.uk', '$2b$10$XA/pJAVh9haMKkUqFGILw.idpOPPNgvu08Xw6ma3zhrXl9xnLiv1G');
 
 
 # Insert test topics

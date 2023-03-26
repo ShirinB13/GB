@@ -19,7 +19,7 @@ CREATE TABLE users (
   surname VARCHAR(20) NOT NULL,
   username VARCHAR(15) NOT NULL UNIQUE,
   email VARCHAR(100),
-  psw VARCHAR(50),
+  psw VARCHAR(100),
   PRIMARY KEY(username)
 );
 

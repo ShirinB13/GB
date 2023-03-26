@@ -8,6 +8,9 @@ module.exports = function (app, blogData) {
     res.render("register.ejs", blogData);
   });
 
+  // needed for hashing passwords (npm install bcrypt if you don't have already)
+  const bcrypt = require("bcrypt");
+
   // Define the login route
   app.post("/register", function (req, res) {
     const username = req.body.username;
@@ -35,7 +38,9 @@ module.exports = function (app, blogData) {
         console.log("user:", user);
 
         // Verify the user's password
-        if (user.psw === password) {
+        const isPasswordValid = bcrypt.compareSync(password, user.psw);
+
+        if (isPasswordValid) {
           // Create a session with the user's information
           const sessionData = {
             username: user.username,
@@ -476,14 +481,21 @@ module.exports = function (app, blogData) {
     const lastName = req.body.LastName;
     const username = req.body.username;
     const email = req.body.email;
-    const password = req.body.psw;
+    const plainTextPassword = req.body.psw;
 
-    let sqlquery = `INSERT INTO users (firstname, surname, username, email) 
-                  VALUES (?, ?, ?, ?)`;
+    // Generate a random salt
+    const saltRounds = 10;
+    const salt = bcrypt.genSaltSync(saltRounds);
+
+    // Hash the password using the salt
+    const hashedPassword = bcrypt.hashSync(plainTextPassword, salt);
+
+    let sqlquery = `INSERT INTO users (firstname, surname, username, email, psw) 
+                  VALUES (?, ?, ?, ?, ?)`;
 
     db.query(
       sqlquery,
-      [firstName, lastName, username, email],
+      [firstName, lastName, username, email, hashedPassword],
       function (err, result) {
         if (err) throw err;
         console.log("Saved signup information to MySQL");
@@ -491,4 +503,16 @@ module.exports = function (app, blogData) {
       }
     );
   });
+
+  // HASHING PASSWORDS
+  // const password = "";
+
+  // // Generate a salt to use when hashing the password
+  // const salt = bcrypt.genSaltSync(10);
+
+  // // Hash the password using the salt
+  // const hashedPassword = bcrypt.hashSync(password, salt);
+
+  // console.log("Password:", password);
+  // console.log("Hashed Password:", hashedPassword);
 };
