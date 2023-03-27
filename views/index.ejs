@@ -101,6 +101,16 @@
     <div class="buildingimg">
       <img src="/images/build.jpeg" alt="picture of goldsmiths building" />
     </div>
+    <% if (user) { %>
+      <center>
+        <button onclick="window.location.href='/addpost'">ADD A POST</button>
+      </center>      
+    <% } else { %>
+      <center>
+        <p>You must be logged in to create your own posts.</p>
+      </center>
+    <% } %>
+    
     </a> 
   </body>
 </html>
