@@ -99,7 +99,7 @@
       </div>
     </div>
     <h1>Welcome to Sociology</h1>
-    <table>
+    <!-- <table>
       <tr>
         <th>Date</th>
         <th>Title</th>
@@ -120,6 +120,60 @@
         <td colspan="5">No posts yet.</td>
       </tr>
       <% } %>
-    </table>
+    </table> -->
+    <div class="blog-container">
+      <div class="row">
+        <% if (posts.length > 0) { %> <% posts.forEach(function(post) { %>
+        <div class="column">
+          <div class="card">
+            <h2><%= post.post_title %></h2>
+            <h5><%= post.post_date %></h5>
+            <div class="post-preview">
+              <%= post.post_content.substring(0, 100) + '...' %>
+            </div>
+            <a
+              href="#"
+              class="read-more-link"
+              data-post="<%= JSON.stringify(post) %>"
+              >Read More</a
+            >
+            <div class="author">By <%= post.username %></div>
+            <div class="topic">Topic: <%= post.topic_title %></div>
+          </div>
+        </div>
+        <% }); %> <% } else { %>
+        <div class="column">
+          <div class="card">
+            <h2>No posts yet</h2>
+            <p>Check back later for updates.</p>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <script>
+      const readMoreLinks = document.querySelectorAll(".read-more-link");
+
+      readMoreLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          const post = JSON.parse(link.dataset.post);
+          const postContent = post.post_content;
+          const postPreview = link.parentNode.querySelector(".post-preview");
+          postPreview.innerHTML = postContent;
+          const showLessButton = document.createElement("a");
+          showLessButton.href = "#";
+          showLessButton.textContent = "Show Less";
+          showLessButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            postPreview.innerHTML = post.post_content.substring(0, 100) + "...";
+            showLessButton.remove();
+            link.style.display = "inline-block";
+          });
+          link.parentNode.insertBefore(showLessButton, link.nextSibling);
+          link.style.display = "none";
+        });
+      });
+    </script>
   </body>
 </html>

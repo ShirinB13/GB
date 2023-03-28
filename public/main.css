@@ -31,10 +31,7 @@ h2 {
 .buildingimg {
   display: block;
   margin: 0 auto;
-  border-radius: 50%;
   width: 80%;
-  max-width: 40%;
-  float: left;
 }
 
 .buildingimg img {
@@ -201,6 +198,7 @@ body {
   color: black;
   padding: 50px;
 }
+
 .card {
   background-color: #fff;
   border-radius: 5px;
@@ -236,4 +234,12 @@ body {
   font-size: 14px;
   color: #888;
   margin-top: 10px;
+}
+
+.post-content {
+  display: none;
+}
+
+.show-less-button {
+  display: none;
 }

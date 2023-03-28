@@ -98,15 +98,22 @@
       </div>
     </div>
 
-    <h1>Welcome to arts</h1>
     <div class="blog-container">
       <div class="row">
-        <!-- <% if (posts.length > 0) { %> <% posts.forEach(function(post) { %>
+        <% if (posts.length > 0) { %> <% posts.forEach(function(post) { %>
         <div class="column">
           <div class="card">
             <h2><%= post.post_title %></h2>
             <h5><%= post.post_date %></h5>
-            <p><%= post.post_content %></p>
+            <div class="post-preview">
+              <%= post.post_content.substring(0, 100) + '...' %>
+            </div>
+            <a
+              href="#"
+              class="read-more-link"
+              data-post="<%= JSON.stringify(post) %>"
+              >Read More</a
+            >
             <div class="author">By <%= post.username %></div>
             <div class="topic">Topic: <%= post.topic_title %></div>
           </div>
@@ -118,24 +125,33 @@
             <p>Check back later for updates.</p>
           </div>
         </div>
-        <% } %> -->
-        <% posts.forEach(function(post) { %>
-        <div class="column">
-          <div class="card">
-            <div class="card-body">
-              <h2><%= post.post_title %></h2>
-              <p class="card-text">
-                <%= post.post_content.substring(0, 150) %>...
-              </p>
-              <div class="author">By <%= post.username %></div>
-              <div class="topic">Topic: <%= post.topic_title %></div>
-              <a href="/post/<%= post.id %>" class="btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <% }); %>
+        <% } %>
       </div>
     </div>
+    <script>
+      const readMoreLinks = document.querySelectorAll(".read-more-link");
+
+      readMoreLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          const post = JSON.parse(link.dataset.post);
+          const postContent = post.post_content;
+          const postPreview = link.parentNode.querySelector(".post-preview");
+          postPreview.innerHTML = postContent;
+          const showLessButton = document.createElement("a");
+          showLessButton.href = "#";
+          showLessButton.textContent = "Show Less";
+          showLessButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            postPreview.innerHTML = post.post_content.substring(0, 100) + "...";
+            showLessButton.remove();
+            link.style.display = "inline-block";
+          });
+          link.parentNode.insertBefore(showLessButton, link.nextSibling);
+          link.style.display = "none";
+        });
+      });
+    </script>
 
     <!-- <div class="image-container">
       <img src="/images/abstract.jpeg" alt="Image of abstract art" />
