@@ -5,7 +5,7 @@ var bodyParser = require("body-parser");
 
 // Create the express application object
 const app = express();
-const port = 8000;
+const port = 8001;
 const mysql = require("mysql");
 const session = require("express-session");
 app.use(bodyParser.urlencoded({ extended: true }));

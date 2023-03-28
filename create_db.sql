@@ -40,3 +40,4 @@ CREATE TABLE posts (
     FOREIGN KEY (username) REFERENCES users(username),
     FOREIGN KEY (topic_title) REFERENCES topics(topic_title)
 );
+
