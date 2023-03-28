@@ -30,8 +30,19 @@ CREATE TABLE topics (
    PRIMARY KEY(topic_title)
 );
 
-# Create the posts table to store the user posts
+-- # Create the posts table to store the user posts
+-- CREATE TABLE posts (
+--     post_date DATETIME,
+--     post_title VARCHAR(100),
+--     post_content VARCHAR(2000),
+--     username VARCHAR(15),
+--     topic_title VARCHAR(50),
+--     FOREIGN KEY (username) REFERENCES users(username),
+--     FOREIGN KEY (topic_title) REFERENCES topics(topic_title)
+-- );
+
 CREATE TABLE posts (
+    post_id INT PRIMARY KEY AUTO_INCREMENT,
     post_date DATETIME,
     post_title VARCHAR(100),
     post_content VARCHAR(2000),
