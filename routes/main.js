@@ -504,6 +504,58 @@ module.exports = function (app, blogData) {
     );
   });
 
+  // app.delete("/posts/:id", function (req, res) {
+  //   var postId = req.params.id;
+
+  //   db.query(
+  //     "DELETE FROM posts WHERE post_id = ?",
+  //     [postId],
+  //     function (err, result) {
+  //       if (err) {
+  //         console.log(err);
+  //         res.status(500).send("Error deleting post.");
+  //       } else if (result.affectedRows === 0) {
+  //         res.status(404).send("Post not found.");
+  //       } else {
+  //         res.status(200).send("Post deleted successfully.");
+  //       }
+  //     }
+  //   );
+  // });
+
+  app.delete("/posts/:postId", function (req, res) {
+    const postId = req.params.postId;
+    const username = req.body.username;
+
+    db.query(
+      "SELECT * FROM posts WHERE post_id = ?",
+      [postId],
+      function (err, result) {
+        if (err) {
+          console.log(err);
+          res.status(500).send("Internal Server Error");
+        } else if (result.length === 0) {
+          res.status(404).send("Post Not Found");
+        } else if (result[0].username !== username) {
+          res.status(403).send("Forbidden");
+        } else {
+          db.query(
+            "DELETE FROM posts WHERE post_id = ?",
+            [postId],
+            function (err, result) {
+              if (err) {
+                console.log(err);
+                res.status(500).send("Internal Server Error");
+              } else {
+                res.sendStatus(200);
+              }
+            }
+          );
+        }
+      }
+    );
+  });
+
   // HASHING PASSWORDS
   // const password = "";
 

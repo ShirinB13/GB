@@ -126,6 +126,14 @@
           <div class="card">
             <h2><%= post.post_title %></h2>
             <h5><%= post.post_date %></h5>
+            <% if (user && user.username === post.username) { %>
+            <button
+              onclick="if (confirm('Are you sure you want to delete this post?')) { deletePost('<%= post.post_id %>') }"
+            >
+              DELETE
+            </button>
+            <% } %>
+
             <div class="post-preview">
               <%= post.post_content.substring(0, 100) + '...' %>
             </div>
@@ -172,6 +180,26 @@
           link.style.display = "none";
         });
       });
+    </script>
+    <script>
+      function deletePost(postId, username) {
+        const xhr = new XMLHttpRequest();
+        const url = `/posts/${postId}`;
+
+        xhr.onreadystatechange = function () {
+          if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200) {
+              window.location.reload();
+            } else {
+              console.log("Error:", this.statusText);
+            }
+          }
+        };
+
+        xhr.open("DELETE", url);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ username: username }));
+      }
     </script>
   </body>
 </html>
