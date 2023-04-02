@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to <%=blogName%></title>
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
 
@@ -83,7 +82,6 @@
           window.location.href = "/signup";
         }
       </script>
-
       <!-- Search Bar-->
       <div class="dropdown">
         <button class="dropbtn">
@@ -98,46 +96,47 @@
         </div>
       </div>
     </div>
-    <h1>Welcome to Education</h1>
+    <div class="bg">
+      <div class="blog-container">
+        <div class="row">
+          <% if (posts.length > 0) { %> <% posts.forEach(function(post) { %>
+          <div class="column">
+            <div class="card">
+              <h2><%= post.post_title %></h2>
+              <h5><%= post.post_date %></h5>
 
-    <div class="blog-container">
-      <div class="row">
-        <% if (posts.length > 0) { %> <% posts.forEach(function(post) { %>
-        <div class="column">
-          <div class="card">
-            <h2><%= post.post_title %></h2>
-            <h5><%= post.post_date %></h5>
-            <% if (user && user.username === post.username) { %>
-            <button
-              onclick="if (confirm('Are you sure you want to delete this post? It cannot be retrieved.')) {
-                    deletePost('<%= post.post_id %>', '<%= user.username %>')
-                  }"
-            >
-              DELETE
-            </button>
-            <% } %>
+              <% if (user && user.username === post.username) { %>
+              <button
+                onclick="if (confirm('Are you sure you want to delete this post? It cannot be retrieved.')) {
+                  deletePost('<%= post.post_id %>', '<%= user.username %>')
+                }"
+              >
+                DELETE
+              </button>
+              <% } %>
 
-            <div class="post-preview">
-              <%= post.post_content.substring(0, 100) + '...' %>
+              <div class="post-preview">
+                <%= post.post_content.substring(0, 100) + '...' %>
+              </div>
+              <a
+                href="#"
+                class="read-more-link"
+                data-post="<%= JSON.stringify(post) %>"
+                >Read More</a
+              >
+              <div class="author">By <%= post.username %></div>
+              <div class="topic">Topic: <%= post.topic_title %></div>
             </div>
-            <a
-              href="#"
-              class="read-more-link"
-              data-post="<%= JSON.stringify(post) %>"
-              >Read More</a
-            >
-            <div class="author">By <%= post.username %></div>
-            <div class="topic">Topic: <%= post.topic_title %></div>
           </div>
-        </div>
-        <% }); %> <% } else { %>
-        <div class="column">
-          <div class="card">
-            <h2>No posts yet</h2>
-            <p>Check back later for updates.</p>
+          <% }); %> <% } else { %>
+          <div class="column">
+            <div class="card">
+              <h2>No posts yet</h2>
+              <p>Check back later for updates.</p>
+            </div>
           </div>
+          <% } %>
         </div>
-        <% } %>
       </div>
     </div>
     <script>
