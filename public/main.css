@@ -1,20 +1,58 @@
 @charset "UTF-8";
 
 h1 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "AlfaSlabOne-Regular";
   font-size: 20px;
   color: darkcyan;
 }
 
 h2 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Baskervville-Regular";
   font-size: 20px;
   color: cadetblue;
 }
 
+h4 {
+  font-family: "Lato-Italic";
+  font-size: 24px;
+  font-weight: bold;
+  color: cadetblue;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h5{
+  font-family: "Lato-Italic";
+  font-size: 24px;
+  font-weight: bold;
+  color: cadetblue;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h6 {
+  font-family: "Lato-Italic";
+  font-size: 24px;
+  font-weight: bold;
+  color: cadetblue;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+
+.bg{
+  background-image: url("images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .blog-container {
-  float: left;
-  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .image-container {
@@ -39,20 +77,20 @@ h2 {
   margin-top: 10%;
 }
 
-p,
+/* p,
 li {
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
 a:link {
-  color: orangered;
+  color: rgb(197, 193, 191);
   text-decoration: none;
   padding: 5px;
 }
 
 /* visited link */
 a:visited {
-  color: tomato;
+  color: rgb(159, 164, 163);
   text-decoration: none;
   padding: 5px;
 }
@@ -67,16 +105,17 @@ a:hover {
 
 /* selected link */
 a:active {
-  color: blue;
+  color: rgb(185, 191, 193);
   text-decoration: none;
   padding: 5px;
 }
 
 .navbar {
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: transparent;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 .navbar a {
   float: left;
@@ -85,7 +124,7 @@ a:active {
   text-align: center;
   padding: 14px 20px;
   text-decoration: none;
-  font-family: inherit;
+  font-family: "PTSerif-Regular";
 }
 .dropdown {
   float: left;
@@ -98,7 +137,7 @@ a:active {
   color: rgb(0, 0, 0);
   padding: 14px 20px;
   background-color: inherit;
-  font-family: inherit;
+  font-family: "PTSerif-Regular";
   margin: 0;
 }
 .navbar a:hover,
@@ -172,20 +211,27 @@ body {
 }
 
 .card {
+  text-align: justify;
   background-color: #ddece8;
   padding: 20px;
   margin-top: 20px;
   border-radius: 30px;
+  font-family: "Baskervville-Regular";
 }
 
-/* Clear floats after the columns */
+.card p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Footer */
 .footer {
   padding: 20px;
   text-align: center;
@@ -211,6 +257,7 @@ body {
 .card h2 {
   font-size: 24px;
   margin-top: 0;
+  font-family: "Caveat-Bold";
 }
 
 .card h5 {
@@ -243,3 +290,279 @@ body {
 .show-less-button {
   display: none;
 }
+
+/* Addpost Page */
+.addbg {
+  background-image: url('/images/addbg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 75vh;
+}
+
+.add-box {
+  max-width: 600px;
+  margin: 50px auto 0;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  position: relative;
+  font-size: 18px;
+}
+
+.add-box label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: "Lato-Italic";
+}
+
+.add-box input,
+.add-box select,
+.add-box textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-family: "Lato-Italic";
+
+}
+
+.add-box button[type=submit] {
+  background-color: #5f9ea0;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-box button[type=submit]:hover {
+  background-color: #808080;
+}
+
+.add-box textarea {
+  height: 200px;
+  font-family: "Lato-Italic";
+}
+.add-box input:focus,
+.add-box select:focus,
+.add-box textarea:focus {
+  outline: 2px solid cadetblue;
+}
+
+
+/* Signup page */
+.signup-box {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 50px auto 0;
+  position: relative;
+}
+
+button.registerbtn {
+  background-color: #5f9ea0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.registerbtn:hover {
+  background-color:  #808080;
+ 
+}
+.signup-box input[type="text"],
+.signup-box input[type="password"]{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.signup-box input[type="text"]:focus,
+.signup-box input[type="password"]:focus {
+  outline: 2px solid #5f9ea0; 
+}
+
+.signup-box label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: "Lato-Italic";
+}
+.signup-box p{
+  font-family: "Lato-Italic";
+}
+.signbg{
+  background-image: url('/images/signbg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+/* Login Page */
+.login-box{
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  font-style: italic;
+
+}
+.login-box input[type="text"]:focus,
+.login-box input[type="password"]:focus {
+  outline: 2px solid #5f9ea0; /* change outline color on focus */
+}
+.login-box label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: "Lato-Italic";
+}
+
+button.loginbtn {
+  background-color: #5f9ea0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.loginbtn:hover {
+  background-color:  #808080;
+ 
+}
+.loginbg{
+  background-image: url('/images/loginbg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+}
+
+/* Slider */
+.slider {
+  overflow: hidden;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+.slider img:first-child {
+  display: block;
+}
+
+/* Welcome Box */
+.container {
+  margin-top: 50px;
+}
+.welcome-box {
+  background-image: url('/images/leaves.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+}
+
+.welcome-box h3 {
+  font-family: "CormorantGaramond-SemiBold";
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #5f9ea0;
+
+}
+
+.welcome-box p {
+  font-family: "DeliciousHandrawn-Regular";
+  font-size: 30px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  color:#808080;
+}
+
+.welcome-box button {
+  font-family: "Limelight-Regular";
+  background-color: #000;
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  float: left;
+  margin-top: -10px;
+  transition: background-color 0.2s ease;
+}
+
+.welcome-box button:hover {
+  background-color: #555;
+}
+
+.welcome-box button:active {
+  background-color: #333;
+}
+
+/* fonts */
+/* All fonts below are from https://fonts.google.com  */
+@font-face {
+  font-family: "CormorantGaramond-SemiBold";
+  src: url("CormorantGaramond-SemiBold");
+  font-family: "Fasthand-Regular";
+  src: url("fonts/Fasthand-Regular.ttf");
+  font-family: "Lato-Italic";
+  src: url("fonts/Lato-Italic.ttf");
+  font-family: "PTSerif-Regular";
+  src: url("fonts/PTSerif-Regular.ttf");
+  font-family: "Baskervville-Regular";
+  src: url("fonts/Baskervville-Regular.ttf");
+  font-family: "Limelight-Regular";
+  src: url("fonts/Limelight-Regular.ttf");
+  font-family: "AlfaSlabOne-Regular";
+  src: url("fonts/AlfaSlabOne-Regular.ttf");
+  font-family: "DeliciousHandrawn-Regular";
+  src: url("fonts/DeliciousHandrawn-Regular.ttf");
+
+}
+
+/* Images Attribution */
+/* (bg.jpg)https://www.freepik.com/free-photo/abstract-beige-paint-texture-design-space_16495865.htm#query=neutral%20background&position=23&from_view=search&track=ais">Image by rawpixel.com */
+/* (leaves.jpg)https://www.freepik.com/free-photo/eucalyptus-silver-dollar-white-marble-banner_15550623.htm#query=white%20aesthetic%20background&position=32&from_view=search&track=ais>Image by rawpixel.com */
+/* (loginbg.jpg)https://www.freepik.com/free-photo/green-leaves-nature-background-image_15550621.htm#query=white%20aesthetic%20background&position=24&from_view=search&track=ais>Image by rawpixel.com*/
+/*(signbg.jpg)https://www.freepik.com/free-photo/eucalyptus-leaves-with-copy-space_26924239.htm#page=6&query=white%20aesthetic%20background&position=14&from_view=search&track=ais>Image by rawpixel.com*/
+/* (addbgjpg)https://www.rawpixel.com/image/2211985/gray-memphis-textured-background */
+/* (image1.jpg)https://www.masterstudiesltd.com/en/summer-courses/england-and-scotland/london-goldsmiths-college/*/
+/* (image2.jpg)https://www.london.ac.uk/ways-study/study-campus-london/member-institutions/goldsmiths-university-london*/
+/* (image3.jpg)https://www.theguardian.com/education/2009/may/10/universityguide-goldsmiths-uni-london */
+/* (image4.jpg)https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships/goldsmiths-university-london*/
+
+
+
+
+
+
+
+
+
+/* https://fonts.google.com/specimen/Lato?noto.lang=cs_Latn&noto.script=Latn&query=Lato /
+

@@ -98,20 +98,54 @@
         </div>
       </div>
     </div>
-    <div class="buildingimg">
-      <img src="/images/build.jpeg" alt="picture of goldsmiths building" />
-    </div>
-    <% if (user) { %>
-      <center>
-        <button onclick="window.location.href='/addpost'">ADD A POST</button>
-      </center>
-    <% } else { %>
-      <center>
-        <p>You must be logged in to create your own posts.</p>
-      </center>
-    <% } %>
 
-    </a>
+    <!--Image Slider-->
+    <div class="slider">
+      <img src="/images/image1.jpg" />
+      <img src="/images/image2.jpg" />
+      <img src="/images/image3.jpg" />
+      <img src="/images/image4.jpg" />
+    </div>
+    <script>
+      var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        var i;
+        var slides = document
+          .getElementsByClassName("slider")[0]
+          .getElementsByTagName("img");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 5000); // Change image every 5 seconds
+      }
+    </script>
+
+    <!-- Weclome Box -->
+    <div class="container">
+      <div class="welcome-box">
+        <h3>Welcome to GOLDBUBBLE</h3>
+        <p>
+          Join our student community and empower your learning journey<br />
+          with our blog. Discover, share, and enhance your knowledge<br />
+          with other students across different study areas!
+        </p>
+        <% if (user) { %>
+        <center>
+          <button onclick="window.location.href='/addpost'">ADD A POST</button>
+        </center>
+        <% } else { %>
+        <center>
+          <button onclick="window.location.href='/signup'">GET STARTED</button>
+        </center>
+        <% } %>
+      </div>
+    </div>
   </body>
 </html>
-
