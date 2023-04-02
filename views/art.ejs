@@ -1,3 +1,6 @@
+<script>
+  mainHandler = require("../routes/main.js");
+</script>
 <!DOCTYPE html>
 <html>
   <head>
@@ -105,14 +108,11 @@
           <div class="card">
             <h2><%= post.post_title %></h2>
             <h5><%= post.post_date %></h5>
-            <!-- <% if (user && user.username === post.username) { %>
-            <button onclick="deletePost('<%= post.post_id %>')">DELETE</button>
-            <% } %> -->
             <% if (user && user.username === post.username) { %>
             <button
               onclick="if (confirm('Are you sure you want to delete this post? It cannot be retrieved.')) {
-                deletePost('<%= post.post_id %>', '<%= user.username %>')
-              }"
+                    deletePost('<%= post.post_id %>', '<%= user.username %>')
+                  }"
             >
               DELETE
             </button>
@@ -165,7 +165,6 @@
         });
       });
     </script>
-
     <script>
       function deletePost(postId, username) {
         const xhr = new XMLHttpRequest();

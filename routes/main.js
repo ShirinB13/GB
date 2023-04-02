@@ -73,20 +73,6 @@ module.exports = function (app, blogData) {
     res.redirect("/");
   });
 
-  app.get("/search", function (req, res) {
-    let keyword = req.query.keyword;
-    let sqlquery = "SELECT * FROM posts WHERE post_title LIKE ?";
-    let searchValue = "%" + keyword + "%";
-    db.query(sqlquery, searchValue, (err, result) => {
-      if (err) {
-        res.redirect("./");
-      }
-      let newData = Object.assign({}, blogData, { posts: result });
-      console.log(newData);
-      res.render("search.ejs", newData);
-    });
-  });
-
   app.get("/art", function (req, res) {
     const user = req.session.user;
     let sqlquery = "SELECT * FROM posts WHERE topic_title = ?";
@@ -382,8 +368,19 @@ module.exports = function (app, blogData) {
       res.render("gamescomputing.ejs", newData);
     });
   });
-  app.get("/signup", function (req, res) {
-    res.render("signup.ejs", blogData);
+
+  app.get("/search", function (req, res) {
+    let keyword = req.query.keyword;
+    let sqlquery = "SELECT * FROM posts WHERE post_title LIKE ?";
+    let searchValue = "%" + keyword + "%";
+    db.query(sqlquery, searchValue, (err, result) => {
+      if (err) {
+        res.redirect("./");
+      }
+      let newData = Object.assign({}, blogData, { posts: result });
+      console.log(newData);
+      res.render("search.ejs", newData);
+    });
   });
 
   app.get("/blogs", function (req, res) {
@@ -433,115 +430,6 @@ module.exports = function (app, blogData) {
       }
     );
   });
-
-  // app.get("/addpost", function (req, res) {
-  //   // render the addpost.ejs template with the user object
-  //   res.render("addpost.ejs", {
-  //     user: req.session.user,
-  //     initialvalues: {
-  //       post_date: "",
-  //       username: "",
-  //       topic_title: "",
-  //       post_title: "",
-  //       post_content: "",
-  //     },
-  //     errormessage: "",
-  //   });
-  // });
-
-  // // Add a New Post page
-  // app.post("/addpost", function (req, res) {
-  //   let user = req.session.user;
-  //   if (!user) {
-  //     res.redirect("/login");
-  //     return;
-  //   }
-  //   let initialvalues = {
-  //     username: user.username,
-  //     topic_title: "",
-  //     post_title: "",
-  //     post_content: "",
-  //     post_date: "",
-  //   };
-  //   renderAddNewPost(res, initialvalues, "", user);
-  // });
-
-  // // Helper function to render the Add New Post page
-  // function renderAddNewPost(res, initialvalues, errormessage, user) {
-  //   let data = Object.assign({}, blogData, initialvalues, {
-  //     errormessage: errormessage,
-  //     user: user,
-  //   });
-  //   console.log(data);
-  //   res.render("addpost.ejs", data);
-  //   return;
-  // }
-
-  // // Add a New Post page form handler
-  // app.post("/postadded", function (req, res) {
-  //   // Check if the user already exists
-  //   let sqlquery = "SELECT * FROM users WHERE username = ?";
-  //   let username = req.body.username;
-  //   db.query(sqlquery, username, (err, result) => {
-  //     if (err) {
-  //       console.error(err.message);
-  //       return;
-  //     }
-  //     if (result.length == 0) {
-  //       res.status(400).send("User not found in the database");
-  //       return;
-  //     }
-
-  //     // Insert the post into the database
-  //     sqlquery =
-  //       "INSERT INTO posts (post_date, post_title, post_content, username, topic_title) VALUES (?, ?, ?, ?, ?)";
-  //     let postRecord = [
-  //       req.body.post_date,
-  //       req.body.post_title,
-  //       req.body.post_content,
-  //       req.body.username,
-  //       req.body.topic_title,
-  //     ];
-
-  //     db.query(sqlquery, postRecord, (err, result) => {
-  //       if (err) {
-  //         console.error(err.message);
-  //         return;
-  //       }
-  //       // Pass the data to the EJS page and view it
-  //       return renderAddNewPost(
-  //         res,
-  //         {
-  //           post_date: req.body.post_date,
-  //           post_title: req.body.post_title,
-  //           post_content: req.body.post_content,
-  //           username: req.body.username,
-  //           topic_title: req.body.topic_title,
-  //         },
-  //         "",
-  //         req.session.user
-  //       );
-  //     });
-
-  // // Render the addpost.ejs template with the user object
-  // res.render("addpost.ejs", {
-  //   user: req.session.user,
-  //   post_date: req.body.post_date,
-  //   username: req.body.username,
-  //   topic_title: req.body.topic_title,
-  //   post_title: req.body.post_title,
-  //   post_content: req.body.post_content,
-  //   errormessage: "",
-  // });
-  // db.query(sqlquery, postRecord, (err, result) => {
-  //   if (err) {
-  //     console.error(err.message);
-  //     return;
-  //   }
-  //   res.redirect("/" + req.body.topic_title);
-  // });
-  // });
-  // });
 
   // handle POST request to save signup information
   app.post("/registered", function (req, res) {
