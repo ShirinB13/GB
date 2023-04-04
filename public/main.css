@@ -399,6 +399,10 @@ button.registerbtn:hover {
 .signup-box p{
   font-family: "Lato-Italic";
 }
+.signup-box p1{
+  font-family: "Lato-Italic";
+  font-size: 15px;
+}
 .signbg{
   background-image: url('/images/signbg.jpg');
   background-size: cover;

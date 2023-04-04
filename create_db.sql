@@ -1,5 +1,5 @@
 # Make sure the database is created before you run this script
-#     CREATE DATABASE goldbubble;
+CREATE DATABASE goldbubble;
 
 # Select the database
 USE goldbubble;

@@ -1,3 +1,5 @@
+
+const app = require('../index');
 module.exports = function (app, blogData) {
   // Handle our routes
   app.get("/", function (req, res) {
@@ -19,6 +21,18 @@ module.exports = function (app, blogData) {
     console.log("username:", username);
     console.log("password:", password);
 
+    if (!username || !password) {
+      // Return an error response if either field is blank
+      res.status(400).json({ message: 'Username and password are required' });
+      return;
+    }
+
+    if (password.length < 7) {
+      // Return an error response if the password is too short
+      res.status(400).json({ message: 'Password must be at least 8 characters long' });
+      return;
+    }
+
     // Query the database for the user with the matching username
     db.query(
       "SELECT * FROM users WHERE username = ?",
@@ -29,7 +43,7 @@ module.exports = function (app, blogData) {
         // If there is no user with the matching username, redirect back to the login page
         if (result.length === 0) {
           console.log("No user found with username:", username);
-          res.redirect("/register");
+          res.redirect(302,"/register");
           return;
         }
 
@@ -55,10 +69,8 @@ module.exports = function (app, blogData) {
           res.redirect("/");
         } else {
           // The password is incorrect
-          console.log("Incorrect password for user:", username);
-          res.render("register.ejs", {
-            message: "Invalid username or password",
-          });
+          console.log("Incorrect password ", username);
+          res.status(401).json({ message: 'Incorrect password' });
         }
       }
     );
@@ -370,16 +382,93 @@ module.exports = function (app, blogData) {
   });
 
   app.get("/search", function (req, res) {
-    let keyword = req.query.keyword;
+    let keyword = req.query.query;
     let sqlquery = "SELECT * FROM posts WHERE post_title LIKE ?";
     let searchValue = "%" + keyword + "%";
     db.query(sqlquery, searchValue, (err, result) => {
       if (err) {
-        res.redirect("./");
+        console.log(err);
+        res.status(500).send("Error seraching try again later");
       }
       let newData = Object.assign({}, blogData, { posts: result });
       console.log(newData);
-      res.render("search.ejs", newData);
+      if (keyword && keyword.includes("anthropology")){
+        res.redirect("anthropology");
+
+      }else if (keyword && keyword.includes("art")){
+        res.redirect("art");
+
+      }else if (keyword && keyword.includes("business")){
+        res.redirect("business");
+
+      }else if (keyword && keyword.includes("computer science")){
+        res.redirect("computerscience");
+
+      }else if (keyword && keyword.includes("computing")){
+        res.redirect("computing");
+
+      }else if (keyword && keyword.includes("dance")){
+        res.redirect("dance&performance");
+
+      }else if (keyword && keyword.includes("performance")){
+        res.redirect("dance&performance");
+
+      }else if (keyword && keyword.includes("design")){
+        res.redirect("design");
+
+      }else if (keyword && keyword.includes("education")){
+        res.redirect("education");
+
+      }else if (keyword && keyword.includes("english")){
+        res.redirect("english");
+
+      }else if (keyword && keyword.includes("game")){
+        res.redirect("gamescomputing");
+
+      }else if (keyword && keyword.includes("history")){
+        res.redirect("history");
+
+      }else if (keyword && keyword.includes("language")){
+        res.redirect("languages");
+
+      }else if (keyword && keyword.includes("law")){
+        res.redirect("law");
+
+      }else if (keyword && keyword.includes("media")){
+        res.redirect("media");
+
+      }else if (keyword && keyword.includes("music")){
+        res.redirect("music");
+
+      }else if (keyword && keyword.includes("politics")){
+        res.redirect("politics");
+
+      }else if (keyword && keyword.includes("psychology")){
+        res.redirect("psychology");
+
+      }else if (keyword && keyword.includes("register")){
+        res.redirect("register");
+
+      }else if (keyword && keyword.includes("sign")){
+        res.redirect("signup");
+
+      }else if (keyword && keyword.includes("sociology")){
+        res.redirect("sociology");
+
+      }else if (keyword && keyword.includes("theatre")){
+        res.redirect("theatre");
+
+      }else if (keyword && keyword.includes("visual")){
+        res.redirect("visualcultures");
+
+      }else if (keyword && keyword.includes("cultures")){
+        res.redirect("visualcultures");
+
+      }else{
+
+        res.render("search.ejs", newData);
+
+      }
     });
   });
 
@@ -439,6 +528,12 @@ module.exports = function (app, blogData) {
     const email = req.body.email;
     const plainTextPassword = req.body.psw;
 
+    if (!username || !plainTextPassword || !firstName || !lastName || !email) {
+      // Return an error response if either field is blank
+      res.status(400).json({ message: 'All the fields are required' });
+      return;
+    }
+
     // Generate a random salt
     const saltRounds = 10;
     const salt = bcrypt.genSaltSync(saltRounds);
@@ -460,7 +555,7 @@ module.exports = function (app, blogData) {
     );
   });
 
-  // Define the route for deleting a post
+// Define the route for deleting a post
   app.delete("/posts/:postId", function (req, res) {
     const postId = req.params.postId;
     const username = req.query.username; // read username from query parameters
@@ -486,7 +581,9 @@ module.exports = function (app, blogData) {
         }
       }
     );
-  });
+  }); 
+  
+
 
   // HASHING PASSWORDS
   // const password = "";
