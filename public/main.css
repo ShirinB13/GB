@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 h1 {
-  font-family: "AlfaSlabOne-Regular";
+  font-family: "Trebuchet MS";
   font-size: 20px;
   color: darkcyan;
 }
 
 h2 {
-  font-family: "Baskervville-Regular";
+  font-family: "Trebuchet MS";
   font-size: 20px;
   color: cadetblue;
 }
 
 h4 {
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
   font-size: 24px;
   font-weight: bold;
   color: cadetblue;
@@ -23,7 +23,7 @@ h4 {
 }
 
 h5{
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
   font-size: 24px;
   font-weight: bold;
   color: cadetblue;
@@ -33,7 +33,7 @@ h5{
 }
 
 h6 {
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
   font-size: 24px;
   font-weight: bold;
   color: cadetblue;
@@ -41,7 +41,6 @@ h6 {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-
 
 .bg{
   background-image: url("images/bg.jpg");
@@ -76,11 +75,6 @@ h6 {
   width: 100%;
   margin-top: 10%;
 }
-
-/* p,
-li {
-  font-family: Arial, Helvetica, sans-serif;
-} */
 
 a:link {
   color: rgb(197, 193, 191);
@@ -124,7 +118,7 @@ a:active {
   text-align: center;
   padding: 14px 20px;
   text-decoration: none;
-  font-family: "PTSerif-Regular";
+  font-family: "Trebuchet MS";
 }
 .dropdown {
   float: left;
@@ -137,7 +131,7 @@ a:active {
   color: rgb(0, 0, 0);
   padding: 14px 20px;
   background-color: inherit;
-  font-family: "PTSerif-Regular";
+  font-family: "Trebuchet MS";
   margin: 0;
 }
 .navbar a:hover,
@@ -176,7 +170,7 @@ a:active {
 }
 
 body {
-  font-family: Arial;
+  font-family: "Trebuchet MS";
   padding: 20px;
   background: white;
 }
@@ -216,7 +210,7 @@ body {
   padding: 20px;
   margin-top: 20px;
   border-radius: 30px;
-  font-family: "Baskervville-Regular";
+  font-family: "Trebuchet MS";
 }
 
 .card p {
@@ -257,7 +251,7 @@ body {
 .card h2 {
   font-size: 24px;
   margin-top: 0;
-  font-family: "Caveat-Bold";
+  font-family: "Trebuchet MS";
 }
 
 .card h5 {
@@ -312,7 +306,7 @@ body {
 .add-box label {
   display: block;
   margin-bottom: 5px;
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
 }
 
 .add-box input,
@@ -324,7 +318,7 @@ body {
   border-radius: 4px;
   box-sizing: border-box;
   margin-bottom: 10px;
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
 
 }
 
@@ -345,7 +339,7 @@ body {
 
 .add-box textarea {
   height: 200px;
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
 }
 .add-box input:focus,
 .add-box select:focus,
@@ -394,13 +388,13 @@ button.registerbtn:hover {
 .signup-box label {
   display: block;
   margin-bottom: 5px;
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
 }
 .signup-box p{
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
 }
 .signup-box p1{
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
   font-size: 15px;
 }
 .signbg{
@@ -439,7 +433,7 @@ button.registerbtn:hover {
 .login-box label {
   display: block;
   margin-bottom: 5px;
-  font-family: "Lato-Italic";
+  font-family: "Trebuchet MS";
 }
 
 button.loginbtn {
@@ -490,7 +484,7 @@ button.loginbtn:hover {
 }
 
 .welcome-box h3 {
-  font-family: "CormorantGaramond-SemiBold";
+  font-family: "Trebuchet MS";
   font-size: 32px;
   margin-bottom: 20px;
   color: #5f9ea0;
@@ -498,7 +492,7 @@ button.loginbtn:hover {
 }
 
 .welcome-box p {
-  font-family: "DeliciousHandrawn-Regular";
+  font-family: "Trebuchet MS";
   font-size: 30px;
   line-height: 1.7;
   margin-bottom: 30px;
@@ -506,7 +500,7 @@ button.loginbtn:hover {
 }
 
 .welcome-box button {
-  font-family: "Limelight-Regular";
+  font-family: "Trebuchet MS";
   background-color: #000;
   color: #FFF;
   padding: 10px 20px;

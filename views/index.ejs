@@ -99,6 +99,27 @@
       </div>
     </div>
 
+    <!-- Weclome Box -->
+    <div class="container">
+      <div class="welcome-box">
+        <h3>Welcome to GOLDBUBBLE</h3>
+        <p>
+          Join our student community and empower your learning journey<br />
+          with our blog. Discover, share, and enhance your knowledge<br />
+          with other students across different study areas!
+        </p>
+        <% if (user) { %>
+        <center>
+          <button onclick="window.location.href='/addpost'">ADD A POST</button>
+        </center>
+        <% } else { %>
+        <center>
+          <button onclick="window.location.href='/signup'">GET STARTED</button>
+        </center>
+        <% } %>
+      </div>
+    </div>
+
     <!--Image Slider-->
     <div class="slider">
       <img src="/images/image1.jpg" />
@@ -126,26 +147,5 @@
         setTimeout(showSlides, 5000); // Change image every 5 seconds
       }
     </script>
-
-    <!-- Weclome Box -->
-    <div class="container">
-      <div class="welcome-box">
-        <h3>Welcome to GOLDBUBBLE</h3>
-        <p>
-          Join our student community and empower your learning journey<br />
-          with our blog. Discover, share, and enhance your knowledge<br />
-          with other students across different study areas!
-        </p>
-        <% if (user) { %>
-        <center>
-          <button onclick="window.location.href='/addpost'">ADD A POST</button>
-        </center>
-        <% } else { %>
-        <center>
-          <button onclick="window.location.href='/signup'">GET STARTED</button>
-        </center>
-        <% } %>
-      </div>
-    </div>
   </body>
 </html>
