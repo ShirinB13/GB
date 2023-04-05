@@ -463,9 +463,9 @@ button.loginbtn:hover {
 }
 
 .slider img {
-  width: 100%;
-  height: auto;
-  display: none;
+  width: 80%;
+  margin: 0 auto;
+  /* border-radius: 5%; */
 }
 
 .slider img:first-child {
@@ -481,6 +481,7 @@ button.loginbtn:hover {
   background-size: cover;
   background-position: center;
   padding: 50px;
+  margin-bottom: 40px;
 }
 
 .welcome-box h3 {
